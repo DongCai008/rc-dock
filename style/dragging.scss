@@ -39,6 +39,10 @@ body > .dragging-layer {
   user-select: none;
   -webkit-user-select: none;
   touch-action: none;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .drag-accept-reject {

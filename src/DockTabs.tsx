@@ -333,7 +333,7 @@ export class DockTabs extends React.PureComponent<Props> {
   render(): React.ReactNode {
     let {group, tabs, activeId} = this.props.panelData;
     let tabGroup = this.context.getGroup(group);
-    let {animated, moreIcon, separator} = tabGroup;
+    let {animated, moreIcon, separator, editable} = tabGroup;
     if (animated == null) {
       animated = true;
     }
@@ -355,6 +355,7 @@ export class DockTabs extends React.PureComponent<Props> {
             tabSeparator={separator}
             renderTabBar={this.renderTabBar}
             activeKey={activeId}
+            editable={editable}
             onChange={this.onTabChange}
             popupClassName={classNames(groupClassNames(group))}
       >

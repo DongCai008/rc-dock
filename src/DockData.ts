@@ -82,6 +82,10 @@ export interface TabGroup {
    * Add separator between tabs
    */
   separator?: React.ReactNode;
+  /**
+   * Add tab editable support
+   */
+  editable?: TabsProps['editable'];
 }
 
 /** @ignore */
