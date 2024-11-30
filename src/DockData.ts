@@ -207,7 +207,7 @@ export interface TabData extends TabBase, DockDataBase {
    */
   title: React.ReactChild;
   content: React.ReactElement | ((tab: TabData) => React.ReactElement);
-  closable?: boolean;
+  closeIcon?: React.ReactNode;
 
 
   /**

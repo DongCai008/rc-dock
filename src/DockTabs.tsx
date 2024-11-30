@@ -149,7 +149,7 @@ export class TabCache {
   }
 
   render(): React.ReactElement {
-    let {id, title, content, closable, cached, parent} = this.data;
+    let {id, title, content, closeIcon, cached, parent} = this.data;
     let {onDragStart, onDragOver, onDrop, onDragLeave} = this;
     if (parent.parent.mode === 'window') {
       onDragStart = null;
@@ -164,10 +164,15 @@ export class TabCache {
       <DragDropDiv getRef={this.getRef} onDragStartT={onDragStart} role="tab" aria-selected={parent.activeId === id}
                    onDragOverT={onDragOver} onDropT={onDrop} onDragLeaveT={onDragLeave}>
         {title}
-        {closable ?
-          <div className="dock-tab-close-btn" onClick={this.onCloseClick}/>
-          : null
-        }
+        {closeIcon && (
+          <button
+            type="button"
+            className={"dock-tab-close-btn"}
+            onClick={this.onCloseClick}
+          >
+            {closeIcon}
+          </button>
+        )}
         <div className="dock-tab-hit-area" ref={this.getHitAreaRef}/>
       </DragDropDiv>
     );
@@ -302,7 +307,7 @@ export class DockTabs extends React.PureComponent<Props> {
       if (showNewWindowButton) {
         maxBtn = this.addNewWindowMenu(maxBtn, !maximizable);
       }
-      if (panelData.parent.mode === 'float' && !panelData.tabs.find((tab) => !tab.closable)) {
+      if (panelData.parent.mode === 'float' && !panelData.tabs.find((tab) => !!tab.closeIcon)) {
         panelExtraContent =
         <>
           {maxBtn}
