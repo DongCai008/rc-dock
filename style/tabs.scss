@@ -152,36 +152,6 @@
     left: 0;
   }
 
-  &-tab-close-btn {
-    position: absolute;
-    cursor: pointer;
-    font-family: 'Fredoka One', sans-serif;
-    color: $button-text-color;
-    right: -3px;
-    font-size: 12px;
-    width: 16px;
-    text-align: center;
-    top: 6px;
-    outline: none;
-    transition: all 0.25s ease-in-out;
-
-    &:before {
-      content: "X";
-    }
-  }
-
-  &-tab-close-btn:hover,
-  &-tab-close-btn:focus {
-    color: $button-text-focus-color;
-    transform: scale(1.1, 1.1);
-  }
-
-  &-tab:hover &-tab-close-btn,
-  &-tab-close-btn:focus {
-    opacity: 1;
-    color: $button-text-middle-color;
-  }
-
   &-tab-hit-area {
     position: absolute;
     pointer-events: none;
