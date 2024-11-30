@@ -328,7 +328,7 @@ export class DockTabs extends React.PureComponent<Props> {
   render(): React.ReactNode {
     let {group, tabs, activeId} = this.props.panelData;
     let tabGroup = this.context.getGroup(group);
-    let {animated, moreIcon} = tabGroup;
+    let {animated, moreIcon, separator} = tabGroup;
     if (animated == null) {
       animated = true;
     }
@@ -347,6 +347,7 @@ export class DockTabs extends React.PureComponent<Props> {
       <Tabs prefixCls="dock"
             moreIcon={moreIcon}
             animated={animated}
+            tabSeparator={separator}
             renderTabBar={this.renderTabBar}
             activeKey={activeId}
             onChange={this.onTabChange}

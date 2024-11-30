@@ -1,5 +1,6 @@
 import * as React from "react";
 import {Filter} from "./Algorithm";
+import { TabsProps } from "rc-tabs";
 
 export interface TabGroup {
   /**
@@ -77,6 +78,10 @@ export interface TabGroup {
    * Override the default `moreIcon`
    */
   moreIcon?: React.ReactNode;
+  /**
+   * Add separator between tabs
+   */
+  separator?: React.ReactNode;
 }
 
 /** @ignore */
