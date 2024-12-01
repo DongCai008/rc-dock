@@ -178,7 +178,7 @@ export class TabCache {
     );
 
     return (
-      <DockTabPane key={id} cacheId={id} cached={cached} tab={tab}>
+      <DockTabPane key={id} cacheId={id} cached={cached} tab={tab} closable={false} closeIcon={null} >
         {content}
       </DockTabPane>
     );
