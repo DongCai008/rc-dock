@@ -192,6 +192,7 @@
   &-nav {
     display: flex;
     flex: none;
+    flex-grow: 1;
     position: relative;
 
     &-operations {
