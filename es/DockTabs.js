@@ -138,7 +138,7 @@ export class TabCache {
         return e.clientX > midx ? 'after-tab' : 'before-tab';
     }
     render() {
-        let { id, title, content, closable, cached, parent } = this.data;
+        let { id, title, content, closeIcon, cached, parent } = this.data;
         let { onDragStart, onDragOver, onDrop, onDragLeave } = this;
         if (parent.parent.mode === 'window') {
             onDragStart = null;
@@ -151,11 +151,9 @@ export class TabCache {
         }
         let tab = (React.createElement(DragDropDiv, { getRef: this.getRef, onDragStartT: onDragStart, role: "tab", "aria-selected": parent.activeId === id, onDragOverT: onDragOver, onDropT: onDrop, onDragLeaveT: onDragLeave },
             title,
-            closable ?
-                React.createElement("div", { className: "dock-tab-close-btn", onClick: this.onCloseClick })
-                : null,
+            closeIcon && (React.createElement("button", { type: "button", className: "dock-tab-close-btn", onClick: this.onCloseClick }, closeIcon)),
             React.createElement("div", { className: "dock-tab-hit-area", ref: this.getHitAreaRef })));
-        return (React.createElement(DockTabPane, { key: id, cacheId: id, cached: cached, tab: tab }, content));
+        return (React.createElement(DockTabPane, { key: id, cacheId: id, cached: cached, tab: tab, closable: false, closeIcon: null }, content));
     }
     destroy() {
         // place holder
@@ -206,7 +204,7 @@ export class DockTabs extends React.PureComponent {
                 if (showNewWindowButton) {
                     maxBtn = this.addNewWindowMenu(maxBtn, !maximizable);
                 }
-                if (panelData.parent.mode === 'float' && !panelData.tabs.find((tab) => !tab.closable)) {
+                if (panelData.parent.mode === 'float' && !panelData.tabs.find((tab) => !!tab.closeIcon)) {
                     panelExtraContent =
                         React.createElement(React.Fragment, null,
                             maxBtn,
@@ -263,7 +261,7 @@ export class DockTabs extends React.PureComponent {
     render() {
         let { group, tabs, activeId } = this.props.panelData;
         let tabGroup = this.context.getGroup(group);
-        let { animated, moreIcon } = tabGroup;
+        let { animated, moreIcon, separator, editable } = tabGroup;
         if (animated == null) {
             animated = true;
         }
@@ -275,7 +273,7 @@ export class DockTabs extends React.PureComponent {
         for (let [id, tab] of this._cache) {
             children.push(tab.content);
         }
-        return (React.createElement(Tabs, { prefixCls: "dock", moreIcon: moreIcon, animated: animated, renderTabBar: this.renderTabBar, activeKey: activeId, onChange: this.onTabChange, popupClassName: classNames(groupClassNames(group)) }, children));
+        return (React.createElement(Tabs, { prefixCls: "dock", moreIcon: moreIcon, animated: animated, tabSeparator: separator, renderTabBar: this.renderTabBar, activeKey: activeId, editable: editable, onChange: this.onTabChange, popupClassName: classNames(groupClassNames(group)) }, children));
     }
 }
 DockTabs.contextType = DockContextType;

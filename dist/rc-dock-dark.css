@@ -35,6 +35,10 @@ body > .dragging-layer > div:last-child {
   user-select: none;
   -webkit-user-select: none;
   touch-action: none;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .drag-accept-reject::after {
@@ -161,30 +165,6 @@ body > .dragging-layer > div:last-child {
   bottom: 0;
   left: 0;
 }
-.dock-tab-close-btn {
-  position: absolute;
-  cursor: pointer;
-  font-family: "Fredoka One", sans-serif;
-  color: #444;
-  right: -3px;
-  font-size: 12px;
-  width: 16px;
-  text-align: center;
-  top: 6px;
-  outline: none;
-  transition: all 0.25s ease-in-out;
-}
-.dock-tab-close-btn:before {
-  content: "X";
-}
-.dock-tab-close-btn:hover, .dock-tab-close-btn:focus {
-  color: #fff;
-  transform: scale(1.1, 1.1);
-}
-.dock-tab:hover .dock-tab-close-btn, .dock-tab-close-btn:focus {
-  opacity: 1;
-  color: #a2a2a2;
-}
 .dock-tab-hit-area {
   position: absolute;
   pointer-events: none;
@@ -220,6 +200,7 @@ body > .dragging-layer > div:last-child {
 .dock-nav {
   display: flex;
   flex: none;
+  flex-grow: 1;
   position: relative;
 }
 .dock-nav-operations {

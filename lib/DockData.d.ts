@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Filter } from "./Algorithm";
+import { TabsProps } from "rc-tabs";
 export interface TabGroup {
     /**
      * Whether tab can be dragged into float layer.
@@ -69,6 +70,14 @@ export interface TabGroup {
      * Override the default `moreIcon`
      */
     moreIcon?: React.ReactNode;
+    /**
+     * Add separator between tabs
+     */
+    separator?: React.ReactNode;
+    /**
+     * Add tab editable support
+     */
+    editable?: TabsProps['editable'];
 }
 /** @ignore */
 export declare const defaultGroup: TabGroup;
@@ -171,7 +180,7 @@ export interface TabData extends TabBase, DockDataBase {
      */
     title: React.ReactChild;
     content: React.ReactElement | ((tab: TabData) => React.ReactElement);
-    closable?: boolean;
+    closeIcon?: React.ReactNode;
     /**
      * - when value is true: content will always reuse the react component thus allows the component to keep its internal state
      * - when value is false: content will be destroyed when it's not visible, [[TabGroup.animated]] should be set to false, otherwise animation would show blank pages
