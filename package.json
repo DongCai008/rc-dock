@@ -34,7 +34,7 @@
     "rc-dropdown": "~4.0.1",
     "rc-menu": "~9.8.4",
     "rc-new-window": "^0.1.13",
-    "rc-tabs": "~11.16.1",
+    "rc-tabs": "https://github.com/DongCai008/tabs.git#chrome-tabs-v11.6.1",
     "react": ">=16.0.0",
     "react-dom": ">=16.0.0"
   },
